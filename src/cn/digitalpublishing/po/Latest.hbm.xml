@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.Latest" table="T_LATEST">
+		<id name="id" type="java.lang.String">
+			<column name="id" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="type" type="java.lang.String">
+			<column name="type" length="16">
+				<comment>分类（0、综合 1、文档 2、照片 3、图片 4、音视频）</comment>
+			</column>
+		</property>
+		<property name="title" type="java.lang.String">
+			<column name="title" length="64">
+				<comment>主题</comment>
+			</column>
+		</property>
+		<property name="head" type="java.lang.String">
+			<column name="head" length="64">
+				<comment>活动发起者</comment>
+			</column>
+		</property>
+		<property name="content" type="java.lang.String">
+			<column name="content" length="1024">
+				<comment>简介</comment>
+			</column>
+		</property>
+		<property name="picture" type="java.lang.String">
+            <column name="picture" length="128">
+            	<comment>主题图片</comment>
+            </column>
+        </property>
+        <property name="originName" type="java.lang.String">
+            <column name="originName" length="128">
+            	<comment>附件包原名</comment>
+            </column>
+        </property>
+        <property name="systemName" type="java.lang.String">
+            <column name="systemName" length="64">
+            	<comment>附件包系统名</comment>
+            </column>
+        </property>
+        <property name="startDate" type="java.util.Date">
+            <column name="startDate" length="32">
+                <comment>活动开始日期</comment>
+            </column>
+        </property>
+        <property name="stopDate" type="java.util.Date">
+            <column name="stopDate" length="32">
+                <comment>活动结束日期</comment>
+            </column>
+        </property>
+        <property name="createOn" type="java.util.Date">
+            <column name="createOn" length="32">
+                <comment>创建日期</comment>
+            </column>
+        </property>
+	</class>
+</hibernate-mapping>

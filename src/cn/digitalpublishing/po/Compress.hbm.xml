@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.Compress" table="T_COMPRESS">
+		<id name="id" type="java.lang.String">
+			<column name="id" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="title" type="java.lang.String">
+			<column name="title" length="64">
+				<comment>包名</comment>
+			</column>
+		</property>
+		<property name="path" type="java.lang.String">
+            <column name="path" length="64">
+            	<comment>路径</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" length="64">
+            	<comment>状态（0.可以下载，1.不能下载）</comment>
+            </column>
+        </property>
+        <property name="createOn" type="java.util.Date">
+            <column name="createOn" length="32">
+                <comment>创建日期</comment>
+            </column>
+        </property>
+	</class>
+</hibernate-mapping>

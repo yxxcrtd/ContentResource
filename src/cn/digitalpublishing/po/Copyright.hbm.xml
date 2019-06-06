@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.Copyright" table="T_COPYRIGHT">
+		<id name="id" type="java.lang.String">
+			<column name="id" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="author" type="java.lang.String">
+			<column name="author" length="32">
+				<comment>作者</comment>
+			</column>
+		</property>
+		<property name="phone" type="java.lang.String">
+			<column name="phone" length="32">
+				<comment>联系方式</comment>
+			</column>
+		</property>
+		<property name="address" type="java.lang.String">
+			<column name="address" length="128">
+				<comment>地址</comment>
+			</column>
+		</property>
+		<property name="performer" type="java.lang.String">
+			<column name="performer" length="128">
+				<comment>版权归属</comment>
+			</column>
+		</property>
+		<property name="area" type="java.lang.String">
+            <column name="area" length="128">
+            	<comment>版权所在地</comment>
+            </column>
+        </property>
+        <property name="contractName" type="java.lang.String">
+            <column name="contractName" length="64">
+            	<comment>合同名称</comment>
+            </column>
+        </property>
+        <property name="signingDate" type="java.util.Date">
+            <column name="signingDate" length="32">
+                <comment>合同签订日期</comment>
+            </column>
+        </property>
+        <property name="source" type="java.lang.String">
+            <column name="source" length="128">
+            	<comment>合同来源</comment>
+            </column>
+        </property>
+        <property name="cause" type="java.lang.String">
+            <column name="cause" length="128">
+            	<comment>合同签订原因</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="status" length="64">
+            	<comment>合同状态（0、未开始 1、执行中 2、已结束 3、意外中止）</comment>
+            </column>
+        </property>
+        <property name="startDate" type="java.util.Date">
+            <column name="startDate" length="32">
+                <comment>合同开始日期</comment>
+            </column>
+        </property>
+        <property name="stopDate" type="java.util.Date">
+            <column name="stopDate" length="32">
+                <comment>合同结束日期</comment>
+            </column>
+        </property>
+        <property name="margin" type="java.math.BigDecimal">
+            <column name="margin" precision="10" scale="2">
+            	<comment>合同保证金</comment>
+            </column>
+        </property>
+        <property name="largeAmount" type="java.math.BigDecimal">
+            <column name="largeAmount" precision="10" scale="2">
+            	<comment>合同最多金额</comment>
+            </column>
+        </property>
+        <property name="minAmount" type="java.math.BigDecimal">
+            <column name="minAmount" precision="10" scale="2">
+            	<comment>合同最小金额</comment>
+            </column>
+        </property>
+        <property name="originName" type="java.lang.String">
+            <column name="originName" length="128">
+            	<comment>合同附件原名</comment>
+            </column>
+        </property>
+        <property name="systemName" type="java.lang.String">
+            <column name="systemName" length="64">
+            	<comment>合同附件存放系统名</comment>
+            </column>
+        </property>
+        <property name="days" type="java.lang.Integer">
+            <column name="days" length="32">
+            	<comment>合同过期天数</comment>
+            </column>
+        </property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.ProductType" table="T_PRODUCTTYPE">
+		<id name="id" type="java.lang.String">
+			<column name="id" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="name" length="64">
+				<comment>类型名称</comment>
+			</column>
+		</property>
+		<property name="code" type="java.lang.String">
+			<column name="code">
+				<comment>总类编码（0：图书分类，1：图片分类）</comment>
+			</column>
+		</property>
+		<property name="order" type="java.lang.Integer">
+			<column name="orderBy">
+				<comment>类型排序</comment>
+			</column>
+		</property>
+		<many-to-one name="treeCode" class="cn.digitalpublishing.po.ProductType" fetch="select" lazy="false">
+            <column name="treeCode" length="32">
+                <comment>产品分类</comment>
+            </column>
+        </many-to-one>
+		<property name="internationCode" type="java.lang.String">
+			<column name="internationCode" length="32">
+				<comment>国际化参数</comment>
+			</column>
+		</property>
+		<property name="total" type="java.lang.Integer">
+			<column name="total">
+				<comment>资源总数</comment>
+			</column>
+		</property>
+		<set name="productTypeSet" inverse="true">
+			<key>
+				<column name="treeCode" length="32">
+					<comment>产品类型ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.ProductType" />
+		</set>
+	</class>
+</hibernate-mapping>

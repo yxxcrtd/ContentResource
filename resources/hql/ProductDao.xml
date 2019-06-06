@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.ProductDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, isbn, title, translation, pageNum, edition, binding, price, author, publisher, datePublication, bookCovers, originName, systemName, remark, createOn, productType.id, productType.name</properties>
+			<fields>p.id, p.isbn, p.title, p.translation, p.pageNum, p.edition, p.binding, p.price, p.author, p.publisher, p.datePublication, p.bookCovers, p.originName, p.systemName, p.remark, p.createOn, t.id, t.name</fields>
+			<hql>from Product p left join p.productType t</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>p.id = ?</hql>
+				</condition>
+				<condition id="isbn" describe="ISBN">
+					<params type="param">
+						<param name="isbn" type="java.lang.String" />
+					</params>
+					<hql>p.isbn = ?</hql>
+				</condition>
+				<condition id="title" describe="题名">
+					<params type="param">
+						<param name="title" type="java.lang.String" />
+					</params>
+					<hql>p.title like ?</hql>
+				</condition>
+				<condition id="author" describe="作者">
+					<params type="param">
+						<param name="author" type="java.lang.String" />
+					</params>
+					<hql>p.author like ?</hql>
+				</condition>
+				<condition id="publisher" describe="出版社">
+					<params type="param">
+						<param name="publisher" type="java.lang.String" />
+					</params>
+					<hql>p.publisher like ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order> order by p.createOn DESC </order>
+			<className>cn.digitalpublishing.po.Product</className>
+		</query>
+		
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from Product p</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>p.id = ?</hql>
+				</condition>
+				<condition id="isbn" describe="ISBN">
+					<params type="param">
+						<param name="isbn" type="java.lang.String" />
+					</params>
+					<hql>p.isbn = ?</hql>
+				</condition>
+				<condition id="title" describe="题名">
+					<params type="param">
+						<param name="title" type="java.lang.String" />
+					</params>
+					<hql>p.title like ?</hql>
+				</condition>
+				<condition id="author" describe="作者">
+					<params type="param">
+						<param name="author" type="java.lang.String" />
+					</params>
+					<hql>p.author like ?</hql>
+				</condition>
+				<condition id="publisher" describe="出版社">
+					<params type="param">
+						<param name="publisher" type="java.lang.String" />
+					</params>
+					<hql>p.publisher like ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Product</className>
+		</query>
+		
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, isbn, title, translation, pageNum, edition, binding, price, author, publisher, datePublication, bookCovers, originName, systemName, remark, createOn, productType.id</properties>
+			<fields>p.id, p.isbn, p.title, p.translation, p.pageNum, p.edition, p.binding, p.price, p.author, p.publisher, p.datePublication, p.bookCovers, p.originName, p.systemName, p.remark, p.createOn, t.id</fields>
+			<hql>from Product p left join p.productType t</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>p.id = ?</hql>
+				</condition>
+				<condition id="isbn" describe="ISBN">
+					<params type="param">
+						<param name="isbn" type="java.lang.String" />
+					</params>
+					<hql>p.isbn = ?</hql>
+				</condition>
+				<condition id="title" describe="题名">
+					<params type="param">
+						<param name="title" type="java.lang.String" />
+					</params>
+					<hql>p.title like ?</hql>
+				</condition>
+				<condition id="author" describe="作者">
+					<params type="param">
+						<param name="author" type="java.lang.String" />
+					</params>
+					<hql>p.author like ?</hql>
+				</condition>
+				<condition id="publisher" describe="出版社">
+					<params type="param">
+						<param name="publisher" type="java.lang.String" />
+					</params>
+					<hql>p.publisher like ?</hql>
+				</condition>
+				<condition id="productTypeId" describe="分类">
+					<params type="param">
+						<param name="productTypeId" type="java.lang.String" />
+					</params>
+					<hql>p.productType.id = ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Product</className>
+		</query>
+	</dao>
+</web-query>

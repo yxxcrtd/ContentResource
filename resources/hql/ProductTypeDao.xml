@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.ProductTypeDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, name, code, order, internationCode, treeCode.id, treeCode.name</properties>
+			<fields>t.id, t.name, t.code, t.order, t.internationCode, c.id, c.name</fields>
+			<hql>from ProductType t left join t.treeCode c</hql>
+			<conditions>
+				<condition id="id" discribe="产品类型ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>t.id = ?</hql>
+				</condition>
+				<condition id="name" describe="产品类型名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>t.name like  ?</hql>
+				</condition>
+				<condition id="code" discribe="总类">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>t.code = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order> order by t.order</order>
+			<className>cn.digitalpublishing.po.ProductType</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from ProductType t</hql>
+			<conditions>
+				<condition id="id" discribe="产品类型ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>t.id = ?</hql>
+				</condition>
+				<condition id="name" describe="产品类型名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>t.name like  ?</hql>
+				</condition>
+				<condition id="code" discribe="总类">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>t.code = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.ProductType</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, name, code, order, internationCode, total, treeCode.id</properties>
+			<fields>t.id, t.name, t.code, t.order, t.internationCode, t.total, c.id</fields>
+			<hql>from ProductType t left join t.treeCode c</hql>
+			<conditions>
+				<condition id="id" discribe="产品类型ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>t.id = ?</hql>
+				</condition>
+				<condition id="name" describe="产品类型名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>t.name like  ?</hql>
+				</condition>
+				<condition id="code" discribe="总类">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>t.code = ?</hql>
+				</condition>
+				<condition id="treeCode" discribe="父类">
+					<params type="param">
+						<param name="treeCode" type="java.lang.String" />
+					</params>
+					<hql>t.treeCode.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.ProductType</className>
+		</query>
+	</dao>
+</web-query>

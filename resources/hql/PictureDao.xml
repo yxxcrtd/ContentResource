@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PictureDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, title, keyword, pic, remark, createOn, productType.id, productType.name</properties>
+			<fields>p.id, p.title, p.keyword, p.pic, p.remark, p.createOn,t.id,t.name</fields>
+			<hql>from Picture p left join p.productType t</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>p.id = ?</hql>
+				</condition>
+				<condition id="title" describe="标题">
+					<params type="param">
+						<param name="title" type="java.lang.String" />
+					</params>
+					<hql>p.title like ?</hql>
+				</condition>
+				<condition id="keyword" describe="关键词">
+					<params type="param">
+						<param name="keyword" type="java.lang.String" />
+					</params>
+					<hql>p.keyword like ?</hql>
+				</condition>
+				<condition id="productTypeId" describe="分类">
+					<params type="param">
+						<param name="productTypeId" type="java.lang.String" />
+					</params>
+					<hql>p.productType.id = ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order> order by p.createOn DESC </order>
+			<className>cn.digitalpublishing.po.Picture</className>
+		</query>
+		
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from Picture p</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>p.id = ?</hql>
+				</condition>
+				<condition id="title" describe="标题">
+					<params type="param">
+						<param name="title" type="java.lang.String" />
+					</params>
+					<hql>p.title like ?</hql>
+				</condition>
+				<condition id="keyword" describe="关键词">
+					<params type="param">
+						<param name="keyword" type="java.lang.String" />
+					</params>
+					<hql>p.keyword like ?</hql>
+				</condition>
+				<condition id="productTypeId" describe="分类">
+					<params type="param">
+						<param name="productTypeId" type="java.lang.String" />
+					</params>
+					<hql>p.productType.id = ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Picture</className>
+		</query>
+	</dao>
+</web-query>

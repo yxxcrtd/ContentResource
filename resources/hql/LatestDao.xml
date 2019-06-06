@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.LatestDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, type, title, head, content, originName, systemName, picture, startDate,  stopDate, createOn</properties>
+			<fields>t.id, t.type, t.title, t.head, t.content, t.originName, t.systemName, t.picture, t.startDate, t.stopDate, t.createOn</fields>
+			<hql>from Latest t</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>t.id = ?</hql>
+				</condition>
+				<condition id="title" describe="标题">
+					<params type="param">
+						<param name="title" type="java.lang.String" />
+					</params>
+					<hql>t.title like ?</hql>
+				</condition>
+				<condition id="startDate" describe="开始时间">
+					<params type="param">
+						<param name="startDate" type="java.util.Date" />
+					</params>
+					<hql>t.startDate <![CDATA[>]]><![CDATA[=]]> ? </hql>
+				</condition>
+				<condition id="stopDate" describe="结束时间">
+					<params type="param">
+						<param name="stopDate" type="java.util.Date" />
+					</params>
+					<hql>t.startDate <![CDATA[<]]><![CDATA[=]]> ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order> order by t.createOn DESC </order>
+			<className>cn.digitalpublishing.po.Latest</className>
+		</query>
+		
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from Latest t</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>t.id = ?</hql>
+				</condition>
+				<condition id="title" describe="标题">
+					<params type="param">
+						<param name="title" type="java.lang.String" />
+					</params>
+					<hql>t.title like ?</hql>
+				</condition>
+				<condition id="startDate" describe="开始时间">
+					<params type="param">
+						<param name="startDate" type="java.util.Date" />
+					</params>
+					<hql>t.startDate <![CDATA[>]]><![CDATA[=]]> ? </hql>
+				</condition>
+				<condition id="stopDate" describe="结束时间">
+					<params type="param">
+						<param name="stopDate" type="java.util.Date" />
+					</params>
+					<hql>t.startDate <![CDATA[<]]><![CDATA[=]]> ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Latest</className>
+		</query>
+	</dao>
+</web-query>

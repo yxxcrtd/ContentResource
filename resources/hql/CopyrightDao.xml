@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CopyrightDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, author, phone, address, performer, contractName, signingDate, originName, startDate,  stopDate, status, days</properties>
+			<fields>c.id, c.author, c.phone, c.address, c.performer, c.contractName, c.signingDate, c.originName, c.startDate, c.stopDate, c.status, c.days</fields>
+			<hql>from Copyright c</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>c.id = ?</hql>
+				</condition>
+				<condition id="author" describe="作者">
+					<params type="param">
+						<param name="author" type="java.lang.String" />
+					</params>
+					<hql>c.author like ?</hql>
+				</condition>
+				<condition id="contractName" describe="合同名称">
+					<params type="param">
+						<param name="contractName" type="java.lang.String" />
+					</params>
+					<hql>c.contractName like ?</hql>
+				</condition>
+				<condition id="startDate" describe="开始时间">
+					<params type="param">
+						<param name="startDate" type="java.util.Date" />
+					</params>
+					<hql>c.startDate <![CDATA[>]]><![CDATA[=]]> ? </hql>
+				</condition>
+				<condition id="stopDate" describe="结束时间">
+					<params type="param">
+						<param name="stopDate" type="java.util.Date" />
+					</params>
+					<hql>c.startDate <![CDATA[<]]><![CDATA[=]]> ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order> order by c.signingDate DESC </order>
+			<className>cn.digitalpublishing.po.Copyright</className>
+		</query>
+		
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from Copyright c</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>c.id = ?</hql>
+				</condition>
+				<condition id="author" describe="作者">
+					<params type="param">
+						<param name="author" type="java.lang.String" />
+					</params>
+					<hql>c.author like ?</hql>
+				</condition>
+				<condition id="contractName" describe="合同名称">
+					<params type="param">
+						<param name="contractName" type="java.lang.String" />
+					</params>
+					<hql>c.contractName like ?</hql>
+				</condition>
+				<condition id="startDate" describe="开始时间">
+					<params type="param">
+						<param name="startDate" type="java.util.Date" />
+					</params>
+					<hql>c.startDate <![CDATA[>]]><![CDATA[=]]> ? </hql>
+				</condition>
+				<condition id="startDate" describe="结束时间">
+					<params type="param">
+						<param name="stopDate" type="java.util.Date" />
+					</params>
+					<hql>c.startDate <![CDATA[<]]><![CDATA[=]]> ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Copyright</className>
+		</query>
+	</dao>
+</web-query>

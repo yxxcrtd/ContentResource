@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<!--产品信息 -->
+	<bean id="productService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.ProductServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	
+	<!-- 分类信息 -->
+	<bean id="productTypeService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.ProductTypeServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	
+	<!-- 图片信息 -->
+	<bean id="pictureService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.PictureServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	
+	<!-- 最新活动信息 -->
+	<bean id="latestService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.LatestServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	
+	<!-- 作者版权信息 -->
+	<bean id="copyrightService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CopyrightServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	
+	<!-- 授权信息 -->
+	<bean id="authorizationService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.AuthorizationServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	
+	<!-- 产品包信息 -->
+	<bean id="compressService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CompressServiceImpl"
+				parent="baseService" />
+		</property>
+	</bean>
+	
+</beans>
